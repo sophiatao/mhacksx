@@ -31,9 +31,12 @@ export default class RootNavigator extends React.Component {
     this.retrieveCoordinates = this.retrieveCoordinates.bind(this);
   }
 
+  componentWillMount() {
+    this.retrieveCoordinates();
+  }
+
   componentDidMount() {
     this._notificationSubscription = this._registerForPushNotifications();
-    this.retrieveCoordinates();
   }
 
   retrieveCoordinates() { // gets the coordinate locations for the user
@@ -56,7 +59,7 @@ export default class RootNavigator extends React.Component {
 
   render() {
     console.log(this.state.latitude + " " + this.state.longitude);
-    return <RootStackNavigator />;
+    return <RootStackNavigator screenProps={{latitude: this.state.latitude, longitude: this.state.longitude}}/>;
   }
 
   _registerForPushNotifications() {

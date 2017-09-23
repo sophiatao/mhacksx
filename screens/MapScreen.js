@@ -19,7 +19,7 @@ export default class MapScreen extends React.Component {
 
   render() {
     return (
-      <View><Text>Placeholder for map{
+      <View><Text>{this.props.screenProps.latitude}{
         //TODO: Add Google maps here
       }</Text></View>
       //<View style={styles.container}>
