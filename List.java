@@ -22,10 +22,10 @@ public class List
     private void addLots(){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306/mysql?autoReconnect=true&useSSL=false","root","root");  
+            String url ="jdbc:mysql://parking-service.mysql.database.azure.com:3306/mysql?verifyServerCertificate=true&useSSL=true&requireSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+            Connection myDbConn = DriverManager.getConnection(url, "parking-user@parking-service", "Password123");
             //here sonoo is database name, root is username and password  
-            Statement stmt=con.createStatement();  
+            Statement stmt=myDbConn.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from parking.parkinglotattribute");  
             boolean payed = false;
             while(rs.next()){  
@@ -38,7 +38,7 @@ public class List
                 newLot.getName();
                 lots.add(newLot);
             }
-            con.close();  
+            myDbConn.close();  
         }catch(Exception e){ System.out.println(e);}
     }
 }
