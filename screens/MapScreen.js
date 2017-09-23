@@ -15,8 +15,8 @@ export default class MapScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: 37.78825,
-      longitude: -122.4324,
+      latitude: 12,
+      longitude: -12,
     }
   }
   static navigationOptions = {
@@ -24,42 +24,50 @@ export default class MapScreen extends React.Component {
   };
 
   componentWillMount() {
-    this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude})
+    this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude});
+    console.log("OnMapWillMount: SCREENPROPS:" + this.props.screenProps.latitude);
   }
 
   componentDidMount() {
-    this._updateMapPositionAsync();
+    // this._updateMapPositionAsync();
   }
 
-  async _getLocationAsync() {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
-      this.setState({
-        errorMessage: 'Permission to access location was denied',
-      });
-    }
+  // async _getLocationAsync() {
+  //   let { status } = await Permissions.askAsync(Permissions.LOCATION);
+  //   if (status !== 'granted') {
+  //     this.setState({
+  //       errorMessage: 'Permission to access location was denied',
+  //     });
+  //   }
 
-    let location = await Location.getCurrentPositionAsync({});
-    return location;
+  //   let location = await Location.getCurrentPositionAsync({});
+  //   return location;
 
-  }
+  // }
 
-  async _updateMapPositionAsync() {
-    let location = await this._getLocationAsync();
-    this.setState({location, latitude: location.coords.latitude, longitude: location.coords.longitude,});
-   }
+  // async _updateMapPositionAsync() {
+  //   let location = await this._getLocationAsync();
+  //   this.setState({location, latitude: location.coords.latitude, longitude: location.coords.longitude,});
+   // }
 
   render() {
-    console.log(this.state.latitude);
+    console.log("OnMapRender:" + this.props.screenProps.latitude);
     return (
-    <View style={styles.container}><MapView style={styles.map}
-    region={{
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }}
-  /></View>
+    <View style={styles.container}>
+      <MapView style={styles.map}
+      region={{
+        latitude: this.props.screenProps.latitude,
+        longitude: this.props.screenProps.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}>
+      <MapView.Marker
+      coordinate={{latitude: this.state.latitude, longitude: this.state.longitude}}
+      title={"hi"}
+      description={"hi!"}
+      />
+      </MapView>
+    </View>
       //<View style={styles.container}>
         //<ScrollView
         //   style={styles.container}
