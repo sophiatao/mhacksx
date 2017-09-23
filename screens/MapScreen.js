@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { WebBrowser } from 'expo';
+// import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+// import { MonoText } from '../components/StyledText';
 
 export default class MapScreen extends React.Component {
   static navigationOptions = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
-export default class LinksScreen extends React.Component {
+export default class ListScreen extends React.Component {
   static navigationOptions = {
     title: 'Parking locations',
   };

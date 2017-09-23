@@ -6,8 +6,8 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import MapScreen from '../screens/MapScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ListScreen from '../screens/ListScreen';
+import CommentsScreen from '../screens/CommentsScreen';
 
 export default TabNavigator(
   {
@@ -15,10 +15,10 @@ export default TabNavigator(
       screen: MapScreen,
     },
     Links: {
-      screen: LinksScreen,
+      screen: ListScreen,
     },
     Settings: {
-      screen: SettingsScreen,
+      screen: CommentsScreen,
     },
   },
   {
