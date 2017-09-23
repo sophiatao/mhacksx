@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   },
   row: {
     padding: 15,
-    backgroundColor: 'lightblue',
   },
   header: {
     padding: 15,
