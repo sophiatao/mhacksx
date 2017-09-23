@@ -20,14 +20,23 @@ const RootStackNavigator = StackNavigator(
   }
 );
 
+
 export default class RootNavigator extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
       latitude: 12,
       longitude: -12,
       errorMessage: null,
-      parkingLots: [],
+      parkingLots: [
+        {id: 0, name: 'Spot0', distance: '1.0', paid: 'paid'},
+        {id: 1, name: 'Spot1', distance: '1.1', paid: 'paid'},
+        {id: 2, name: 'Spot2', distance: '1.2', paid: 'paid'},
+        {id: 3, name: 'Spot3', distance: '1.3', paid: 'free'},
+        {id: 4, name: 'Spot4', distance: '1.4', paid: 'free'},
+      ],
     }
   }
 
@@ -84,7 +93,7 @@ g
 
   render() {
     console.log("OnRootNavigationRender:" + this.state.latitude + " " + this.state.longitude);
-    return <RootStackNavigator screenProps={{latitude: this.state.latitude, longitude: this.state.longitude}}/>;
+    return <RootStackNavigator screenProps={{latitude: this.state.latitude, longitude: this.state.longitude, parkingLots: this.state.parkingLots}}/>;
   }
 
 }

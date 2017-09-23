@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import List from '../components/List';
+import ParkingList from '../components/ParkingList';
 
 export default class ListScreen extends React.Component {
   static navigationOptions = {
@@ -10,7 +10,7 @@ export default class ListScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View><List testRows={this.props.screenProps.testRows}/></View>
+        <View><ParkingList parkingLots={this.props.screenProps.parkingLots}/></View>
       </ScrollView>
     );
   }

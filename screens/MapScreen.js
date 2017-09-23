@@ -21,11 +21,12 @@ export default class MapScreen extends React.Component {
   }
   static navigationOptions = {
     header: null,
+    title: 'Map',
   };
 
   componentWillMount() {
-    this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude});
-    console.log("OnMapWillMount: SCREENPROPS:" + this.props.screenProps.latitude);
+    // this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude});
+    // console.log("OnMapWillMount: SCREENPROPS:" + this.props.screenProps.latitude);
   }
 
   componentDidMount() {
@@ -52,19 +53,22 @@ export default class MapScreen extends React.Component {
 
   render() {
     console.log("OnMapRender:" + this.props.screenProps.latitude);
+    var lat = this.props.screenProps.latitude;
+    var long = this.props.screenProps.longitude;
     return (
     <View style={styles.container}>
       <MapView style={styles.map}
       region={{
-        latitude: this.props.screenProps.latitude,
-        longitude: this.props.screenProps.longitude,
+        latitude: lat,
+        longitude: long,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }}>
       <MapView.Marker
-      coordinate={{latitude: this.state.latitude, longitude: this.state.longitude}}
+      coordinate={{latitude: lat, longitude: long}}
       title={"hi"}
       description={"hi!"}
+      pinColor={"green"}
       />
       </MapView>
     </View>
