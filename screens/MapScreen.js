@@ -14,20 +14,30 @@ import MapView from 'react-native-maps';
 // import { MonoText } from '../components/StyledText';
 
 export default class MapScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude: 37.78825,
+      longitude: -122.4324,
+    }
+  }
   static navigationOptions = {
     header: null,
   };
 
+  componentWillMount() {
+    this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude})
+  }
+
   render() {
-    // var lat = this.props.screenProps.latitude;
-    // var long = this.props.screenProps.longitude;
+    console.log(this.state.latitude);
     return (
     <View style={styles.container}><MapView style={styles.map}
-    initialRegion={{
-      // latitude: this.props.screenProps.latitude,
-      // longitude: this.props.screenProps.longitude,
-      latitude: 37.78825,
-      longitude: -122.4324,
+    region={{
+      latitude: this.state.latitude,
+      longitude: this.state.longitude,
+      // latitude: 37.78825,
+      // longitude: -122.4324,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     }}

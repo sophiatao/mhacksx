@@ -24,8 +24,8 @@ export default class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: null,
-      longitude: null,
+      latitude: 37.78825,
+      longitude: -122.4324,
       error: null,
       parkingLots: [],
     }
@@ -34,7 +34,7 @@ export default class RootNavigator extends React.Component {
 
   componentWillMount() {
     this.retrieveCoordinates();
-    //TODO: retrieve data from java, call parseString, push to array
+    //TODO: retrieve data from java function, call parseString, push to array
   }
 
   parseString() {
