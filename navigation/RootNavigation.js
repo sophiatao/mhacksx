@@ -21,9 +21,33 @@ const RootStackNavigator = StackNavigator(
 );
 
 export default class RootNavigator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+    }
+    this.retrieveCoordinates = this.retrieveCoordinates.bind(this);
+  }
+
   componentDidMount() {
     this._notificationSubscription = this._registerForPushNotifications();
-    //TODO: THIS IS WHERE THE JAVASCRIPT APP WILL BE FOUND
+    this.retrieveCoordinates();
+  }
+
+  retrieveCoordinates() { // gets the coordinate locations for the user
+    navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.setState({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              error: null,
+            });
+          },
+          (error) => this.setState({ error: error.message }),
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+        );
   }
 
   componentWillUnmount() {
@@ -31,6 +55,7 @@ export default class RootNavigator extends React.Component {
   }
 
   render() {
+    console.log(this.state.latitude + " " + this.state.longitude);
     return <RootStackNavigator />;
   }
 
