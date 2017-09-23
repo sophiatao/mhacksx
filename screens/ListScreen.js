@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import List from '../components/List';
 
 export default class ListScreen extends React.Component {
   static navigationOptions = {
@@ -9,7 +10,7 @@ export default class ListScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View><Text>Placeholder for List view</Text></View>
+        <View><List /></View>
       </ScrollView>
     );
   }
