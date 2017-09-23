@@ -5,13 +5,12 @@ import ParkingList from '../components/ParkingList';
 export default class ListScreen extends React.Component {
   static navigationOptions = {
     title: 'Parking locations',
+    header: null,
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View><ParkingList parkingLots={this.props.screenProps.parkingLots}/></View>
-      </ScrollView>
+        <View style={styles.container}><ParkingList parkingLots={this.props.screenProps.parkingLots}/></View>
     );
   }
 }
@@ -19,7 +18,6 @@ export default class ListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
   },
 });

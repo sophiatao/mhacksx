@@ -1,0 +1,7 @@
+        <FlatList
+          ListHeaderComponent={this.renderHeader}
+          styles={styles.row}
+          data={this.props.parkingLots}
+          renderItem={this.renderItem}
+          keyExtractor={extractKey}
+        />
