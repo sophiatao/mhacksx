@@ -1,4 +1,4 @@
-import { Notifications } from 'expo';
+import { Notifications, Location, Permissions } from 'expo';
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
@@ -26,15 +26,18 @@ export default class RootNavigator extends React.Component {
     this.state = {
       latitude: 37.78825,
       longitude: -122.4324,
-      error: null,
+      errorMessage: null,
       parkingLots: [],
     }
-    this.retrieveCoordinates = this.retrieveCoordinates.bind(this);
   }
 
   componentWillMount() {
-    this.retrieveCoordinates();
+    //this.retrieveCoordinates();
     //TODO: retrieve data from java function, call parseString, push to array
+  }
+
+  componentDidMount() {
+    this._updateMapPositionAsync();
   }
 
   parseString() {
@@ -45,18 +48,36 @@ export default class RootNavigator extends React.Component {
     this._notificationSubscription = this._registerForPushNotifications();
   }
 
-  retrieveCoordinates() { // gets the coordinate locations for the user
-    navigator.geolocation.getCurrentPosition(
-          (position) => {
-            this.setState({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              error: null,
-            });
-          },
-          (error) => this.setState({ error: error.message }),
-          { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-        );
+  // retrieveCoordinates() { // gets the coordinate locations for the user
+  //   navigator.geolocation.getCurrentPosition(
+  //         (position) => {
+  //           this.setState({
+  //             latitude: position.coords.latitude,
+  //             longitude: position.coords.longitude,
+  //             error: null,
+  //           });
+  //         },
+  //         (error) => this.setState({ error: error.message }),
+  //         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+  //       );
+  // }
+
+  async _getLocationAsync() {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    return location;
+
+  }
+
+  async _updateMapPositionAsync() {
+    let location = await this._getLocationAsync();
+    this.setState({location, latitude: location.coords.latitude, longitude: location.coords.longitude,});
   }
 
   componentWillUnmount() {

@@ -9,9 +9,7 @@ import {
   View,
 } from 'react-native';
 import MapView from 'react-native-maps';
-// import { WebBrowser } from 'expo';
-
-// import { MonoText } from '../components/StyledText';
+import { Location, Permissions } from 'expo';
 
 export default class MapScreen extends React.Component {
   constructor(props) {
@@ -29,6 +27,28 @@ export default class MapScreen extends React.Component {
     this.setState({latitude: this.props.screenProps.latitude, longitude: this.props.screenProps.longitude})
   }
 
+  componentDidMount() {
+    this._updateMapPositionAsync();
+  }
+
+  async _getLocationAsync() {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    return location;
+
+  }
+
+  async _updateMapPositionAsync() {
+    let location = await this._getLocationAsync();
+    this.setState({location, latitude: location.coords.latitude, longitude: location.coords.longitude,});
+   }
+
   render() {
     console.log(this.state.latitude);
     return (
@@ -36,8 +56,6 @@ export default class MapScreen extends React.Component {
     region={{
       latitude: this.state.latitude,
       longitude: this.state.longitude,
-      // latitude: 37.78825,
-      // longitude: -122.4324,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     }}
