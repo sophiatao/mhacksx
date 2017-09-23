@@ -10,7 +10,7 @@ export default class ListScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View><List /></View>
+        <View><List testRows={this.props.screenProps.testRows}/></View>
       </ScrollView>
     );
   }

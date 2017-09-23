@@ -48,12 +48,12 @@ const styles = StyleSheet.create({
   },
   row: {
     padding: 15,
-    marginBottom: 5,
+    marginBottom: 0,
     backgroundColor: 'lightblue',
   },
   header: {
     padding: 15,
-    marginBottom: 5,
+    marginBottom: 0,
     backgroundColor: 'skyblue',
   },
 })
