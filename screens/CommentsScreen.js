@@ -14,8 +14,8 @@ export default class CommentsScreen extends React.Component {
                 {id: 0, text: "Lot68 is absolute garbage, there are more snakes there than in my family"},
                 {id: 1, text: 'I actually hate Lot41 because I parked there at MHacks and they fined me'},
                 {id: 2, text: 'You vs. the guy she tells you not to worry about: Lot28 vs Lot102'},
-                {id: 3, text: 'Wish 👏 somebody 👏 would 👏 let 👏 me 👏 park 👏 in 👏 them 👏 like 👏 Lot88'},
-                {id: 4, text: "I don't really have a complaint, I am just depressed and I would like somebody out there to hear me..."},
+                {id: 3, text: 'Lot88 👏 is 👏 the 👏 #1 👏 best 👏 place 👏 to 👏 get 👏 Schwifty'},
+                {id: 4, text: "Any single girls ready to mingle?"},
             ]
         }
         this.addInput = this.addInput.bind(this);

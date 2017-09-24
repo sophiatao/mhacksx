@@ -1,13 +1,22 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
-import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
+import Intro from './Intro';
 
 export default class App extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
     isLoadingComplete: false,
-  };
+    hasReadIntro: false,
+    };
+    this.readIntro = this.readIntro.bind(this);
+  }
+
+  readIntro() {
+    this.setState({hasReadIntro: true});
+  }
 
   componentWillMount() {
     this._fetchDataAsync();
@@ -25,6 +34,8 @@ export default class App extends React.Component {
   }
 
   render() {
+
+    var hasReadIntro = this.state.hasReadIntro;
     console.log(this.state.parkingLots);
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
@@ -35,6 +46,9 @@ export default class App extends React.Component {
         />
       );
     } else {
+      if (!hasReadIntro) {
+        return <Intro readIntro={this.readIntro}/>
+      }
       return (
         <View style={styles.container}>
         <StatusBar hidden={true} />
@@ -54,8 +68,7 @@ export default class App extends React.Component {
         require('./assets/images/robot-prod.png'),
       ]),
       Font.loadAsync([
-        // This is the font that we are using for our tab bar
-        Ionicons.font,
+        // This is the font that we are using for our tab ba
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         { 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf') },
