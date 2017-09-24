@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     backgroundColor: 'skyblue',
     marginTop: 0,
-    color: 'darkblue',
+    color: '#22485e',
   },
 })
