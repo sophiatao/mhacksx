@@ -42,8 +42,9 @@ export default class MapScreen extends React.Component {
         <MapView.Marker
           coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
           title={marker.name}
-          description={marker.paid}
-          pinColor={"red"}
+          description={marker.paid? "This parking lot is paid. \n Available spots: " + marker.spots : "This parking lot is free! \n Available spots: " + marker.spots}
+          pinColor={marker.paid ? "red" : "green"}
+          key={marker.id}
         />
       ))}
       </MapView>
