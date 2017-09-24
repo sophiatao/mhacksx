@@ -1,0 +1,14 @@
+// add into project directory
+
+var accountSid = 'AC14ca24481ecb42295b883cc842d0a86c'; 
+var authToken = '3324d996893a7ed670196a6dd343498a';   
+
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
+
+client.messages.create({
+    body: 'Hello from Ben, Ian, Sophia, & Gabby. Your McMaster hackathon team.',
+    to: '+17053050731',  // Text this number
+    from: '+12345678901' // From a valid Twilio number
+})
+.then((message) => console.log(message.sid));
