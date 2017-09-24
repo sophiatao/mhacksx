@@ -20,9 +20,7 @@ const RootStackNavigator = StackNavigator(
   }
 );
 
-
 export default class RootNavigator extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -41,7 +39,6 @@ export default class RootNavigator extends React.Component {
   }
 
   componentWillMount() {
-    // this._updateMapPositionAsync();
     this.retrieveCoordinates();
     var parkingLots = this.state.parkingLots;
     for (var i = 5; i < 200; i++) {
@@ -49,19 +46,6 @@ export default class RootNavigator extends React.Component {
       parkingLots.push(lot);
     }
     console.log("RootNav" + this.props.parkingLots);
-    //TODO: retrieve data from java function, call parseString, push to array
-  }
-g
-  componentDidMount() {
-
-  }
-
-  parseString() {
-
-  }
-
-  componentDidMount() {
-    // this._notificationSubscription = this._registerForPushNotifications();
   }
 
   retrieveCoordinates() { // gets the coordinate locations for the user
@@ -77,25 +61,6 @@ g
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
         );
   }
-
-  // async _getLocationAsync() {
-  //   let { status } = await Permissions.askAsync(Permissions.LOCATION);
-  //   if (status !== 'granted') {
-  //     this.setState({
-  //       errorMessage: 'Permission to access location was denied',
-  //     });
-  //   }
-
-  //   let location = await Location.getCurrentPositionAsync({});
-  //   return location;
-
-  // }
-
-  // async _updateMapPositionAsync() {
-  //   let location = await this._getLocationAsync();
-  //   this.setState({location, latitude: location.coords.latitude, longitude: location.coords.longitude,});
-  // }/
-
 
   render() {
     console.log("OnRootNavigationRender:" + this.state.latitude + " " + this.state.longitude);
