@@ -9,7 +9,23 @@ export default class App extends React.Component {
     isLoadingComplete: false,
   };
 
+  componentWillMount() {
+    this._fetchDataAsync();
+  }
+
+  async _fetchDataAsync() {
+    try {
+      let response = await fetch('https://facebook.github.io/react-native/movies.json');
+      let responseJson = await response.json();
+      this.setState({parkingLots: responseJson});
+    } catch(error) {
+      console.error(error);
+    }
+    console.log("Async done")
+  }
+
   render() {
+    console.log(this.state.parkingLots);
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -24,7 +40,7 @@ export default class App extends React.Component {
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' &&
             <View style={styles.statusBarUnderlay} />}
-          <RootNavigation />
+          <RootNavigation parkingLots={this.state.parkingLots}/>
         </View>
       );
     }

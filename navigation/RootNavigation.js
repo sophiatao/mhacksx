@@ -48,6 +48,7 @@ export default class RootNavigator extends React.Component {
       var lot = {id: i, name: 'Spot' + i, latitude: 37.786000 + 0.001*i, longitude: -122.40100 - 0.001*i, distance: '1.' + i, paid: 'paid'};
       parkingLots.push(lot);
     }
+    console.log("RootNav" + this.props.parkingLots);
     //TODO: retrieve data from java function, call parseString, push to array
   }
 g
