@@ -50,10 +50,10 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 15,
+    fontSize: 24,
     marginLeft: 0,
     backgroundColor: 'skyblue',
     marginTop: 0,
     color: 'darkblue',
-    height: 20,
   },
 })
