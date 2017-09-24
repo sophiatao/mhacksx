@@ -1,19 +1,26 @@
 import React from 'react';
-import {FlatList, Text, StyleSheet, View} from 'react-native';
+import {FlatList, Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import { Col, Grid, Row } from "react-native-easy-grid";
 
 const extractKey = ({id}) => id
 
 export default class ParkingList extends React.Component {
 
+  resetMap(lat, long) {
+    this.props.resetMap(lat, long)
+  }
+
   renderItem = ({item}) => {
+    var lat = item.latitude;
+    var long = item.longitude;
     return (
-      <Row style={styles.row}>
+      <TouchableOpacity onPress={() => this.resetMap(lat, long)}><Row style={styles.row}>
         <Col><Text style={styles.text}>{item.name}</Text></Col>
         <Col><Text style={styles.text}>{item.distance+'km'}</Text></Col>
         <Col><Text style={styles.text}>{item.paid? "paid" : "free"}</Text></Col>
         <Col><Text style={styles.text} style={item.spots > 18? {color: '#22485e'} : item.spots > 15? {color: '#416275'} : item.spots > 12? {color: '#617C8C'} : item.spots > 9? {color: '#8096A3'} : item.spots > 6? {color: '#A0B0BA'} : item.spots > 3? {color: '#A0B0BA'} : {color: '#dfe4e8'} }>{item.spots}</Text></Col>
       </Row>
+      </TouchableOpacity>
     )
   }
 

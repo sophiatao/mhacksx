@@ -36,6 +36,12 @@ export default class RootNavigator extends React.Component {
       errorMessage: null,
       parkingLots: [],
     }
+    this.resetMap = this.resetMap.bind(this);
+  }
+
+  resetMap(lat, long) {
+    this.setState({latitude: lat, longitude: long,})
+    this.tabView.goToPage(0)
   }
 
   componentWillMount() {
@@ -72,9 +78,9 @@ export default class RootNavigator extends React.Component {
   render() {
     console.log("OnRootNavigationRender:" + this.state.latitude + " " + this.state.longitude);
     return (
-      <ScrollableTabView style={this.props.style} tabBarTextStyle={styles.tabBar} tabBarPosition='overlayBottom' tabBarBackgroundColor='skyblue' tabBarInactiveTextColor='white'>
+      <ScrollableTabView style={this.props.style} tabBarTextStyle={styles.tabBar} tabBarPosition='overlayBottom' tabBarBackgroundColor='skyblue' tabBarInactiveTextColor='white' ref={(tabView) => { this.tabView = tabView; }}>
         <MapScreen tabLabel="Map" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
-        <ListScreen tabLabel="List" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
+        <ListScreen tabLabel="List" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} resetMap={this.resetMap}/>
         <CommentsScreen tabLabel="Reviews" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
       </ScrollableTabView>
     );
