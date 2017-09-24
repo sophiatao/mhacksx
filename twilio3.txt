@@ -1,0 +1,17 @@
+// add code into project directory
+
+// Twilio Credentials 
+var accountSid = 'AC14ca24481ecb42295b883cc842d0a86c'; 
+var authToken = '3324d996893a7ed670196a6dd343498a'; 
+ 
+//require the Twilio module and create a REST client 
+var twilio = require('twilio');
+var client = require('twilio')(accountSid, authToken); 
+ 
+client.messages.create({ 
+    to: "+17053050731", 
+    from: "+12013409425", 
+    body: "Hello from Ben, Ian, Sophia, Gabby. Your McMaster Hackathon team.", 
+}, function(err, message) { 
+    console.log(message.sid); 
+});
