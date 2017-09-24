@@ -34,21 +34,15 @@ export default class RootNavigator extends React.Component {
       latitude: 12,
       longitude: -12,
       errorMessage: null,
-      parkingLots: [
-        {id: 0, name: 'Lot0', latitude: 37.786000, longitude: -122.40100, distance: '1.0', paid: 'paid'},
-        {id: 1, name: 'Lot1', latitude: 37.787000, longitude: -122.40100, distance: '1.1', paid: 'paid'},
-        {id: 2, name: 'Lot2', latitude: 37.788000, longitude: -122.40200, distance: '1.2', paid: 'paid'},
-        {id: 3, name: 'Lot3', latitude: 37.789000, longitude: -122.40300, distance: '1.3', paid: 'free'},
-        {id: 4, name: 'Lot4', latitude: 37.781000, longitude: -122.40400, distance: '1.4', paid: 'free'},
-      ],
+      parkingLots: [],
     }
   }
 
   componentWillMount() {
     this.retrieveCoordinates();
     var parkingLots = this.state.parkingLots;
-    for (var i = 5; i < 200; i++) {
-      var lot = {id: i, name: 'Lot' + i, latitude: 37.786000 + 0.001*i, longitude: -122.40100 - 0.001*i, distance: '1.' + i, paid: 'paid'};
+    for (var i = 0; i < 200; i++) {
+      var lot = {id: i, name: 'Lot' + i, latitude: 42.2959020 + 0.001*i, longitude: -83.7103320 - 0.001*i, distance: '1.' + i, paid: Math.random() < 0.5? 'paid' : 'free'};
       parkingLots.push(lot);
     }
     console.log("RootNav" + this.props.parkingLots);
