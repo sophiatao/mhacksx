@@ -12,19 +12,15 @@ export default class ParkingList extends React.Component {
         <Col><Text style={styles.text}>{item.name}</Text></Col>
         <Col><Text style={styles.text}>{item.distance+'km'}</Text></Col>
         <Col><Text style={styles.text}>{item.paid? "paid" : "free"}</Text></Col>
-        <Col><Text style={styles.text} style={item.spots > 18? {color: '#22485e'} : item.spots > 15? {color: '#416275'} : item.spots > 12? {color: '#617C8C'} : item.spots > 9? {color: '#8096A3'} : item.spots > 6? {color: '#A0B0BA'} : item.spots > 3? {color: '#bfcad1'} : {color: '#dfe4e8'} }>{item.spots}</Text></Col>
+        <Col><Text style={styles.text} style={item.spots > 18? {color: '#22485e'} : item.spots > 15? {color: '#416275'} : item.spots > 12? {color: '#617C8C'} : item.spots > 9? {color: '#8096A3'} : item.spots > 6? {color: '#A0B0BA'} : item.spots > 3? {color: '#A0B0BA'} : {color: '#dfe4e8'} }>{item.spots}</Text></Col>
       </Row>
     )
-  }
-
-  renderHeader = function() {
-    return <Text style={styles.header}>HEADER</Text>
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.header}>a walk in the park.</Text>
+      <Text style={styles.header}>it's a walk in the park.</Text>
         <FlatList
           data={this.props.parkingLots}
           renderItem={this.renderItem}
