@@ -1,6 +1,8 @@
 /*
- * Feel free to add a package, I left it without one due to questions of how everything will fit together.
+ * Feel free to add a package, I left it in websocket cause cool        .
  */
+
+package websocket;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,10 +34,15 @@ public class Update {
         System.out.println(out);
         System.out.println(in);
         
-        /*Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql?atoReconnect=true&useSSL=false","root","root");
-        Statement stmt = con.createStatement();*/
-        //stmt.    Rest of command goes here;
+        Statement stmt = con.createStatement();
+        for(String lot: out){
+            stmt.executeQuery("CALL move_car("+lot+", 1)");
+        }
+        for(String lot: in){
+            stmt.executeQuery("CALL move_car("+lot+", 0)");
+        }
     }
     public static List<String> callServer(String command) throws Exception{
         OkHttpClient client = new OkHttpClient();
