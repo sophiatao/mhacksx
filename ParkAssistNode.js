@@ -10,7 +10,7 @@ function ParkingLot(spaces, aSpaces, paid, dist, name, address){
 var lots = [];
 
 
-var conn = mysql.createConnection({host: "parking-service.mysql.database.azure.com", user: "parking-user@parking-service", password: "Password123", database: "mysql", port: 3306, ssl:{ca:fs.readFileSync({ca-cert filename})}});
+var con = mysql.createConnection({host: "parking-service.mysql.database.azure.com", user: "parking-user@parking-service", password: "Password123", database: "mysql", port: 3306, ssl:{ca:fs.readFileSync({ca-cert filename})}});
 
 function calDist(pLong, pLat, uLong, uLat){
 	return sqrt(pow(uLong - pLong,2) + pow(uLat - pLat, 2));
@@ -25,7 +25,7 @@ con.connect(function(err) {
     	var newLot = new ParkingLot(result[i].spots, result[i].spotsAvailabe, result[i].paid, dist, result[i].name, result[i].address);
     	lots.push(newLot);
     }
-    
+
 	});
 });
 

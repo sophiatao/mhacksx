@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, StyleSheet, View, StatusBar} from 'react-native';
+import {FlatList, Text, StyleSheet, View} from 'react-native';
 import { Col, Grid, Row } from "react-native-easy-grid";
 
 const extractKey = ({id}) => id
@@ -23,8 +23,7 @@ export default class ParkingList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <Text style={styles.header}>HEADER</Text>
+      <Text style={styles.header}>a walk in the park.</Text>
         <FlatList
           data={this.props.parkingLots}
           renderItem={this.renderItem}
@@ -47,6 +46,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
+    fontFamily: 'Roboto',
+    fontWeight: '100',
   },
   header: {
     padding: 15,
@@ -55,5 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'skyblue',
     marginTop: 0,
     color: '#22485e',
+    fontFamily: 'Roboto',
+    fontWeight: '100',
   },
 })

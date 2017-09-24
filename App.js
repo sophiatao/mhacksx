@@ -37,6 +37,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
+        <StatusBar hidden={true} />
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' &&
             <View style={styles.statusBarUnderlay} />}
