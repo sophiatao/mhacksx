@@ -11,11 +11,11 @@ export default class CommentsScreen extends React.Component {
         this.state = {
             nextID: 5,
             sampleText: [
-                {id: 0, text: "Lot68 is absolute garbage, there are more snakes there than in my family"},
-                {id: 1, text: 'I actually hate Lot41 because I parked there at MHacks and they fined me'},
-                {id: 2, text: 'You vs. the guy she tells you not to worry about: Lot28 vs Lot102'},
-                {id: 3, text: 'Lot88 👏 is 👏 the 👏 #1 👏 best 👏 place 👏 to 👏 get 👏 Schwifty'},
-                {id: 4, text: "Any single girls ready to mingle?"},
+                {id: 0, text: "Lot 68 is absolute garbage, there are more 🐍snakes🐍 there than in my family"},
+                {id: 1, text: 'I actually hate Lot 41 because I parked there at MHacks and they fined me'},
+                {id: 2, text: 'You vs. the guy she tells you not to worry about: Lot 28 vs Lot 102'},
+                {id: 3, text: 'Lot 88 👏 is 👏 the 👏 #1 👏 best 👏 place 👏 to 👏 get 👏 Schwifty'},
+                {id: 4, text: "Any single girls ready to mingle? I'm parked in Lot 12 😉"},
             ]
         }
         this.addInput = this.addInput.bind(this);

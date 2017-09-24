@@ -41,14 +41,14 @@ export default class RootNavigator extends React.Component {
   componentWillMount() {
     this.retrieveCoordinates();
     var parkingLots = this.state.parkingLots;
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 120; i++) {
       var lot = {
         id: i,
-        name: 'Lot' + i,
-        latitude: Math.random()<0.5? 42.2959020 + 0.1*Math.random(): 42.2959020 - 0.1*Math.random(),
-        longitude: Math.random()<0.5? -83.7103320 - 0.1*Math.random() : -83.7103320 + 0.1*Math.random(),
+        name: 'Lot ' + i,
+        latitude: Math.random()<0.5? 42.2959020 + 0.2*Math.random(): 42.2959020 - 0.2*Math.random(),
+        longitude: Math.random()<0.5? -83.7103320 - 0.2*Math.random() : -83.7103320 + 0.2*Math.random(),
         distance: '1.' + i,
-        paid: Math.random() < 0.2? true : false,
+        paid: Math.random() < 0.5? true : false,
         spots: Math.floor(Math.random() * 20)};
       parkingLots.push(lot);
     }
