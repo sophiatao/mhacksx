@@ -1,9 +1,15 @@
 import { Notifications, Location, Permissions } from 'expo';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
+import MapScreen from '../screens/MapScreen';
+import ListScreen from '../screens/ListScreen';
+import CommentsScreen from '../screens/CommentsScreen';
+
+var ScrollableTabView = require('react-native-scrollable-tab-view');
 
 const RootStackNavigator = StackNavigator(
   {
@@ -64,7 +70,21 @@ export default class RootNavigator extends React.Component {
 
   render() {
     console.log("OnRootNavigationRender:" + this.state.latitude + " " + this.state.longitude);
-    return <RootStackNavigator screenProps={{latitude: this.state.latitude, longitude: this.state.longitude, parkingLots: this.state.parkingLots}}/>;
+    return (
+      <ScrollableTabView style={this.props.style} tabBarTextStyle={styles.tabBar} tabBarPosition='overlayBottom' tabBarBackgroundColor='skyblue' tabBarInactiveTextColor='white'>
+        <MapScreen tabLabel="Map" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
+        <ListScreen tabLabel="List" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
+        <CommentsScreen tabLabel="Reviews" latitude={this.state.latitude} longitude={this.state.longitude} parkingLots={this.state.parkingLots} />
+      </ScrollableTabView>
+    );
   }
 
 }
+
+const styles = StyleSheet.create({
+  tabBar: {
+    fontFamily: 'Roboto',
+    fontWeight: '100',
+    padding: 5,
+  }
+});

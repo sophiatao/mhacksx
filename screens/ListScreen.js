@@ -10,7 +10,7 @@ export default class ListScreen extends React.Component {
 
   render() {
     return (
-        <View style={styles.container}><ParkingList parkingLots={this.props.screenProps.parkingLots}/></View>
+        <View style={styles.container}><ParkingList parkingLots={this.props.parkingLots}/></View>
     );
   }
 }

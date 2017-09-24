@@ -23,9 +23,9 @@ export default class MapScreen extends React.Component {
   };
 
   render() {
-    console.log("OnMapRender:" + this.props.screenProps.latitude);
-    var lat = this.props.screenProps.latitude;
-    var long = this.props.screenProps.longitude;
+    console.log("OnMapRender:" + this.props.latitude);
+    var lat = this.props.latitude;
+    var long = this.props.longitude;
     return (
     <View style={styles.container}>
       <MapView style={styles.map}
@@ -38,7 +38,7 @@ export default class MapScreen extends React.Component {
         longitudeDelta: 0.0421,
       }}>
 
-      {this.props.screenProps.parkingLots.map(marker => (
+      {this.props.parkingLots.map(marker => (
         <MapView.Marker
           coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
           title={marker.name}
