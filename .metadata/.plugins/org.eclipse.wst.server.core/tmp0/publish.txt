@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Sep 24 13:28:37 EDT 2017
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Ben\\Documents\\University\\Hackathon\\work-bench\\FirstSpringMVCProject\\WebContent\\WEB-INF\\lib\\spring-web-4.1.6.RELEASE-sources.jar=WEB-INF/lib/spring-web-4.1.6.RELEASE-sources.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Ben\\Documents\\University\\Hackathon\\work-bench\\FirstSpringMVCProject\\WebContent\\WEB-INF\\lib\\spring-web-4.1.6.RELEASE.jar=WEB-INF/lib/spring-web-4.1.6.RELEASE.jar
