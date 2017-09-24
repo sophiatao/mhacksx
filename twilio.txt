@@ -1,4 +1,0 @@
-// You can run the command below from your project directory to install the library:
-npm install twilio
-// Then in your code:
-var twilio = require('twilio');
